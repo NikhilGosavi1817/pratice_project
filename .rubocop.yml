@@ -1,0 +1,112 @@
+AllCops:
+    SuggestExtensions: false
+    # NewCops: enable
+    Include:
+      - 'app/**/*.rb'
+      - 'config/**/*.rb'
+      - 'db/**/*.rb'
+
+    DisabledByDefault: true
+
+# Checks the indentation of the first line of the right-hand-side of a multi-line assignment.
+Layout/AssignmentIndentation:
+  Enabled: true
+
+# Checks the indentation of comments.
+Layout/CommentIndentation:
+  Enabled: true
+
+# Checks for two or more consecutive blank lines.
+Layout/EmptyLines:
+  Enabled: true
+
+# Checks whether class/module/method definitions are separated by one or more empty lines.
+Layout/EmptyLineBetweenDefs:
+  Enabled: true
+
+# Checks the indentation of the first key in a hash literal where the opening brace and the first key are on separate lines.
+Layout/FirstHashElementIndentation: #Make sure to use consistent style for this rule
+  Enabled: true
+  EnforcedStyle: consistent
+
+# Checks for inconsistent indentation.
+Layout/IndentationConsistency: #Make sure to use normal style for this rule
+  Enabled: true
+  EnforcedStyle: normal
+
+# Checks that the indentation method is consistent.
+Layout/IndentationStyle:
+  Enabled: true
+
+# Checks for indentation that doesn’t use the specified number of spaces.
+Layout/IndentationWidth:
+  Enabled: true
+
+# Checks whether the rescue and ensure keywords are aligned properly.
+Layout/RescueEnsureAlignment:
+  Enabled: true
+
+# Checks the spacing inside and after block parameters pipes.
+Layout/SpaceAroundBlockParameters:
+  Enabled: true
+
+# Checks that block braces have or don’t have a space before the opening brace depending on configuration.
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+# Checks that block braces have or don’t have surrounding space inside them on configuration.
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+# Checks that braces used for hash literals have or don’t have surrounding space depending on configuration.
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+# Checks for expressions where there is a call to a predicate method with at least one argument,
+# where no parentheses are used around the parameter list, and a boolean operator, && or ||, is used in the last argument.
+Lint/RequireParentheses:
+  Enabled: true
+
+# Looks for trailing whitespace in the source code.
+Layout/TrailingWhitespace:
+  Enabled: true
+
+# Checks for non-ascii characters in identifier and constant names.
+Naming/AsciiIdentifiers:
+  Enabled: true
+
+# Checks for class and module names with an underscore in them.
+Naming/ClassAndModuleCamelCase:
+  Enabled: true
+
+# Makes sure that Ruby source files have snake_case names.
+Naming/FileName:
+  Enabled: true
+
+# Makes sure that all methods use the configured style, snake_case or camelCase, for their names.
+Naming/MethodName:
+  Enabled: true
+
+# Checks that predicate methods names end with a question mark and do not start with a forbidden prefix.
+Naming/PredicateName:
+  Enabled: true
+
+# Makes sure that all variables use the configured style, snake_case or camelCase, for their names.
+Naming/VariableName:
+  Enabled: true
+
+# Checks for uses of ‘and` and `or`, and suggests using `&&` and `||` instead.
+Style/AndOr:
+  Enabled: true
+
+# Check for uses of braces or do/end around single line or multi-line blocks.
+Style/BlockDelimiters:
+  Enabled: true
+
+# Checks hash literal syntax.
+Style/HashSyntax:
+  Enabled: true
+
+# Checks for big numeric literals without ‘_` between groups of digits in them.
+Style/NumericLiterals:
+  Enabled: true

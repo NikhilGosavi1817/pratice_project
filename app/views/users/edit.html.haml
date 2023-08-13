@@ -1,0 +1,30 @@
+= form_with model: current_user, url: user_path(current_user), method: :patch do |f|
+  - if current_user.errors.any?
+    %h2
+      = pluralize(current_user.errors.count,'error')
+      prohibited this user from being saved:
+    %ul
+      - current_user.errors.full_messages.each do |message|
+        %li= message
+  .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name, autofocus: true, autocomplete: "last_name"
+  .field
+    = f.label :age
+    %br/
+    = f.number_field :age, autofocus: true, autocomplete: "age"
+  .field
+    = f.label :date_of_birth
+    %br/
+    = f.date_field :date_of_birth, autofocus: true, autocomplete: "date_of_birth"
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  .actions
+    = f.submit "Save"

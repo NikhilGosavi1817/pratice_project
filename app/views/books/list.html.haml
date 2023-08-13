@@ -1,0 +1,53 @@
+%br
+
+%center.h1.center All Books
+
+= form_tag(book_list_path, method: :get) do
+    %div
+        = label_tag "tags", "Search by Tags: "
+        = text_field_tag "tags", params[:tags]
+        = submit_tag "Search", class: "btn btn-dark"
+    %br
+    %div
+        = label_tag "filter", "Filter by status:"
+        = select_tag "filter", options_for_select([["All books", nil], ["Available books", "available"], ["Not available books","not_available"]], params[:filter])
+        = submit_tag "Filter", class: "btn btn-dark"
+
+%table.table
+    %thead.table
+        %tr
+            %th
+                = link_to "Name", :sort => "name", direction: params[:sort] == "name" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Author Name", :sort => "first_name", direction: params[:sort] == "first_name" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Creation Date", :sort => "created_at", direction: params[:sort] == "created_at" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Likes", :sort => "likes", direction: params[:sort] == "likes" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Number of copies", :sort => "number_of_copy", direction: params[:sort] == "number_of_copy" && params[:direction] == "asc" ? "desc" : "asc"
+            - if current_user.librarian?
+                %th
+                    = link_to "Issued copies", :sort => "number_of_copy", direction: params[:sort] == "number_of_copy" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+        - @book.each do |book|
+            %tr
+                %td
+                    = link_to book.name, book_path(book)
+                %td
+                    - user=User.find(book.user_id)
+                    = user.first_name
+                    = user.last_name
+                %td
+                    = book.created_at
+                %td
+                    = book.likes
+                %td
+                    - if current_user.librarian?
+                        = book.number_of_copy
+                    - else
+                        = book.available_copy
+                %td
+                    - if current_user.librarian?
+                        = book.students.count
+= will_paginate @book

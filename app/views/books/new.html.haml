@@ -1,0 +1,20 @@
+%h3 Add Books
+= form_with model: @book, url:books_path(current_user) , modle: :post do |f|
+    .field
+        = f.label :name
+        %br
+        = f.text_field :name, autofocus: true, autocomplete: "name"
+    .field
+        = f.label :description
+        %br
+        = f.text_field :description, autofocus: true, autocomplete: "description"
+    .field
+        = f.label :number_of_copy
+        %br
+        = f.number_field :number_of_copy, autofocus: true, autocomplete: "number_of_copy"
+    .field
+        = f.label :tags
+        %br
+        = f.collection_select(:tag_ids, Tag.all, :id, :name, {:prompt=> true}, :multiple=> true, class: "form-control")
+    .actions
+    = f.submit "Create"

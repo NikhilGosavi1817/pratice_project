@@ -1,0 +1,59 @@
+#mySidenav.sidenav
+  %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()", :style=> "position:absolute; top:0; right:25px; font-size:30px"} ×
+  
+  %h2.accordion-header
+    %button.accordion-button{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-bs-target" => "#collapseOne", "data-bs-toggle" => "collapse", :type => "button", :style => "color:#FFFFFF"}
+      %i.fa.fa-user
+        My Profile
+  #collapseOne.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+    .accordion-body
+      = link_to edit_avatar_path(current_user.id), class:'btn btn-dark', :style=>"font-size: 15px" do
+        Update Avatar
+        %end
+      = link_to edit_user_path(current_user.id), class: 'btn btn-dark', :style=>"font-size:15px" do
+        Update Personal Data
+  %h2.accordion-header
+    %button.accordion-button.collapsed{"aria-controls" => "collapseTwo", "aria-expanded"=>"false", "data-bs-target" => "#collapseTwo", "data-bs-toggle"=> "collapse", :type=>"button",:style=>"color:#FFFFFF"}
+      %i.fa.fa-book
+        Books
+  #collapseTwo.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+    .accordion-body
+      - if current_user.librarian?
+        = link_to new_book_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Books
+        %button.btn.btn-dark{:type=>"button", :href => "#", :style=>"font-size: 15px"} Create new boook
+      - else
+        = link_to new_book_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          List of books
+        = link_to new_book_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Available books
+        = link_to new_book_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Issued Books
+      %end
+  - if current_user.librarian?
+    %h2.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "collapseThree", "aria-expanded"=>"false", "data-bs-target" => "#collapseThree", "data-bs-toggle"=> "collapse", :type=>"button",:style=>"color:#FFFFFF"}
+        %i.fas.fa-user-graduate
+          Students
+    #collapseThree.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+      .accordion-body
+        = link_to student_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          List of students
+        = link_to new_student_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Add students
+
+  = button_to destroy_user_session_path, class:'btn btn-dark', method: :delete do
+    %i.fas.fa-sign-out-alt
+      Sign Out
+    %end
+
+%span{:onclick => "openNav()", :style => "font-size:30px;cursor:pointer;color:#FFFFFF"} ☰ Menu
+:javascript
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  

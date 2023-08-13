@@ -1,0 +1,29 @@
+%br
+
+%center.h1.center Issued Books
+
+%table.table
+    %thead.table
+        %tr
+            %th
+                = link_to "Name", :sort => "name", direction: params[:sort] == "name" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Author Name", :sort => "first_name", direction: params[:sort] == "first_name" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Creation Date", :sort => "created_at", direction: params[:sort] == "created_at" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Likes", :sort => "likes", direction: params[:sort] == "likes" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+        - @book.each do |book|
+            %tr
+                %td
+                    = link_to book.name, book_path(book)
+                %td
+                    - user=User.find(book.user_id)
+                    = user.first_name
+                    = user.last_name
+                %td
+                    = book.created_at
+                %td
+                    = book.likes
+= will_paginate @book

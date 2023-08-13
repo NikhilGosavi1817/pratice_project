@@ -1,0 +1,7 @@
+= form_with model: @tag, url: tags_path, method: :post do |f|
+    .field
+        = f.label :name
+        %br/
+        = f.text_field :name, autofocus: true
+    .action
+        = f.submit "Create"

@@ -1,0 +1,8 @@
+%h2 Log in
+- if request.path == "/users/sign_in"
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    =render partial: "devise/shared/sign_in", locals: {f: f}
+- elsif request.path == "/student/sign_in"
+  = form_for(resource, url: new_student_registration_path) do |f|
+    =render partial: "devise/shared/sign_in", locals: {f: f}
+

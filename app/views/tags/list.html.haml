@@ -1,0 +1,34 @@
+%br
+
+%center.h1.center All Tags
+
+%table.table
+    %thead.table
+        %tr
+            %th
+                = link_to "Id", :sort => "id", direction: params[:sort] == "id" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Name", :sort => "name", direction: params[:sort] == "first_name" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Creation Date", :sort => "created_at", direction: params[:sort] == "created_at" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Last Update Date", :sort => "updated_at", direction: params[:sort] == "updated_at" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+                = link_to "Number of books", :sort => "number_of_books", direction: params[:sort] == "number_of_books" && params[:direction] == "asc" ? "desc" : "asc"
+            %th
+        - @tag.each do |tag|
+            %tr
+                %td
+                    = tag.id
+                %td
+                    = tag.name
+                %td
+                    = tag.created_at
+                %td
+                    = tag.updated_at
+                %td
+                    = tag.books.count
+                %td
+                    - if tag.books.count<=0
+                        = button_to "Delete", tag_path(tag), method: :delete, class: "btn btn-danger"
+= will_paginate @tag

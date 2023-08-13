@@ -1,0 +1,96 @@
+#mySidenav.sidenav
+  %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()", :style=> "position:absolute; top:0; right:25px; font-size:30px"} ×
+  
+  - if current_user.librarian?
+    %h2.accordion-header
+      %button.accordion-button{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-bs-target" => "#collapseOne", "data-bs-toggle" => "collapse", :type => "button", :style => "color:#FFFFFF"}
+        %i.fa.fa-user
+          My Profile
+    #collapseOne.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+      .accordion-body
+        = link_to edit_avatar_path(current_user), class:'btn btn-dark', :style=>"font-size: 15px" do
+          Update Avatar
+          %end
+        = link_to edit_user_path(current_user), class: 'btn btn-dark', :style=>"font-size:15px" do
+          Update Personal Data
+    %h2.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "collapseTwo", "aria-expanded"=>"false", "data-bs-target" => "#collapseTwo", "data-bs-toggle"=> "collapse", :type=>"button",:style=>"color:#FFFFFF"}
+        %i.fa.fa-book
+          Books
+    #collapseTwo.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+      .accordion-body
+        = link_to book_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          List of books
+        = link_to new_book_path(current_user), class: 'btn btn-dark', :style=>"font-size:15px" do
+          Create new book
+    %h2.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "collapseThree", "aria-expanded"=>"false", "data-bs-target" => "#collapseThree", "data-bs-toggle"=> "collapse", :type=>"button",:style=>"color:#FFFFFF"}
+        %i.fa.fa-book
+          Students
+    #collapseThree.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+      .accordion-body
+        = link_to student_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          List of students
+        = link_to new_student_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Create new student
+        = link_to active_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Active students
+        = link_to suspended_student_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Suspended students
+    %h2.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "collapseFour", "aria-expanded"=>"false", "data-bs-target" => "#collapseFour", "data-bs-toggle"=> "collapse", :type=>"button",:style=>"color:#FFFFFF"}
+        %i.fa.fa-book
+          Tags
+    #collapseFour.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+      .accordion-body
+        = link_to new_tag_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Create tags
+        = link_to tag_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          List of tags
+        = link_to active_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Active students
+        = link_to suspended_student_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          Suspended students
+    = button_to destroy_user_session_path, class:'btn btn-dark', method: :delete do
+      %i.fas.fa-sign-out-alt
+        Sign Out
+      %end
+  - else
+    %h2.accordion-header
+      %button.accordion-button{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-bs-target" => "#collapseOne", "data-bs-toggle" => "collapse", :type => "button", :style => "color:#FFFFFF"}
+        %i.fa.fa-user
+          My Profile
+    #collapseOne.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+      .accordion-body
+        = link_to edit_avatar_path(current_user), class:'btn btn-dark', :style=>"font-size: 15px" do
+          Update Avatar
+          %end
+        = link_to edit_user_path(current_user), class: 'btn btn-dark', :style=>"font-size:15px" do
+          Update Personal Data
+    %h2.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "collapseTwo", "aria-expanded"=>"false", "data-bs-target" => "#collapseTwo", "data-bs-toggle"=> "collapse", :type=>"button",:style=>"color:#FFFFFF"}
+        %i.fa.fa-book
+          Books
+    #collapseTwo.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
+      .accordion-body
+        = link_to book_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+          List of books
+        = link_to root_path(current_user), class: 'btn btn-dark', :style=>"font-size:15px" do
+          Available books
+        = link_to issued_list_path,  class: 'btn btn-dark', :style=>"font-size:15px" do
+          Issued books
+    = button_to destroy_user_session_path, class:'btn btn-dark', method: :delete do
+      %i.fas.fa-sign-out-alt
+        Sign Out
+      %end
+
+%span{:onclick => "openNav()", :style => "font-size:30px;cursor:pointer;color:#FFFFFF"} ☰ Menu
+:javascript
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  

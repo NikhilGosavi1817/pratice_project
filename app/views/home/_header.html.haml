@@ -1,0 +1,17 @@
+%nav.navbar.bg-dark.border-bottom.border-bottom-dark{"data-bs-theme" => "dark"}
+  .container-fluid
+    - if user_signed_in?
+      = render "home/slide_bar"
+    - else
+      %h1{style: "margin-left: 20px; color: #FFFFFF"} Training
+    - if user_signed_in?
+      - if current_user.avatar.attached?
+        = image_tag current_user.avatar, size: 100, class: "rounded-circle mr-1", resize: "24x24!"
+      - else
+        %img.rounded-circle.shadow-4{:alt => "Avatar", :src => "https://www.svgrepo.com/download/5125/avatar.svg", :style => "width: 80px"}/
+    - else
+      .navbar-buttons
+        .button-container
+          %div{:style => "display: flex;"}
+            = link_to "Librarian Login", new_user_session_path, class: "btn btn-dark"
+            = link_to "Student Login", new_student_registration_path, class: "btn btn-dark"
