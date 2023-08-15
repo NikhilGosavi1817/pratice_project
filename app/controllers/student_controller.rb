@@ -11,9 +11,10 @@ class StudentController < ApplicationController
         end
 
         if params[:sort].present?
-            sort_column=params[:sort]
-            sort_direction= params[:direction] || "desc"
-            @student=@student.order("#{sort_column} #{sort_direction}")
+            sort_column=params[:sort] || "id"
+            sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+            # sort_direction= params[:direction] || "desc"
+            @student=@student.order(Arel.sql("#{sort_column} #{sort_direction}"))
         end
         @student=@student.paginate(page: params[:page], per_page: 10)
     end
@@ -52,15 +53,17 @@ class StudentController < ApplicationController
     def suspend_student
         @student=User.find(params[:id])
         if @student.suspend!
-            redirect_to active_path , notice:"Student suspended successfully!"
+            redirect_to active_student_index_path , notice:"Student suspended successfully!"
         else
-            redirect_to active_path , notice:"Student not suspended"
+            redirect_to active_student_index_path , notice:"Student not suspended"
         end
     end
 
     def suspended_student
         @student = User.where(:role_type=>1)
         @student=@student.where(:status=>2)
+        # sort_column = params[:sort] || "id"
+        # @student = @student.where(status: "suspended").order(sort_column).paginate(page: params[:page], per_page: 10)
         if params[:sort].present?
             sort_column=params[:sort]
             sort_direction=params[:direction] || "desc"
@@ -72,7 +75,7 @@ class StudentController < ApplicationController
     def send_reactivation_mail
         @student=User.find(params[:id])
         StudentMailer.with(user: @student).reactivation_mail.deliver_now
-        redirect_to suspended_student_path, notice: "Reactivation mail sent"
+        redirect_to suspended_student_student_index_path, notice: "Reactivation mail sent"
     end
 
     def reactivate_student

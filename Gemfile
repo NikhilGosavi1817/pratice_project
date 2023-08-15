@@ -25,6 +25,9 @@ gem 'aasm'
 gem 'will_paginate', '~> 4.0'
 gem "letter_opener", group: :development
 gem 'prawn', '~> 2.1'
+gem 'apipie-rails'
+gem 'active_model_serializers'
+gem 'active_interaction'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

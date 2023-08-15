@@ -29,5 +29,5 @@
                 %td
                     = student.status
                 %td
-                    = button_to "Suspend", suspend_student_path(student), method: :put, class: "btn btn-dark"
+                    = button_to "Suspend", suspend_student_student_path(student), method: :put, class: "btn btn-dark"
 = will_paginate @students

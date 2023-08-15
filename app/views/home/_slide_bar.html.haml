@@ -19,7 +19,7 @@
           Books
     #collapseTwo.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
       .accordion-body
-        = link_to book_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to book_list_books_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           List of books
         = link_to new_book_path(current_user), class: 'btn btn-dark', :style=>"font-size:15px" do
           Create new book
@@ -29,13 +29,13 @@
           Students
     #collapseThree.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
       .accordion-body
-        = link_to student_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to student_list_student_index_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           List of students
         = link_to new_student_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           Create new student
-        = link_to active_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to active_student_index_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           Active students
-        = link_to suspended_student_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to suspended_student_student_index_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           Suspended students
     %h2.accordion-header
       %button.accordion-button.collapsed{"aria-controls" => "collapseFour", "aria-expanded"=>"false", "data-bs-target" => "#collapseFour", "data-bs-toggle"=> "collapse", :type=>"button",:style=>"color:#FFFFFF"}
@@ -45,11 +45,11 @@
       .accordion-body
         = link_to new_tag_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           Create tags
-        = link_to tag_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to tag_list_tags_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           List of tags
-        = link_to active_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to active_student_index_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           Active students
-        = link_to suspended_student_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to suspended_student_student_index_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           Suspended students
     = button_to destroy_user_session_path, class:'btn btn-dark', method: :delete do
       %i.fas.fa-sign-out-alt
@@ -73,11 +73,11 @@
           Books
     #collapseTwo.accordion-collapse.collapse{"data-bs-parent" => "#accordionExample"}
       .accordion-body
-        = link_to book_list_path, class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to book_list_books_path, class: 'btn btn-dark', :style=>"font-size:15px" do
           List of books
         = link_to root_path(current_user), class: 'btn btn-dark', :style=>"font-size:15px" do
           Available books
-        = link_to issued_list_path,  class: 'btn btn-dark', :style=>"font-size:15px" do
+        = link_to '/books/issued_list', method: :get,  class: 'btn btn-dark', :style=>"font-size:15px" do
           Issued books
     = button_to destroy_user_session_path, class:'btn btn-dark', method: :delete do
       %i.fas.fa-sign-out-alt

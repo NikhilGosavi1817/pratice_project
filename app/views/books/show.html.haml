@@ -14,10 +14,10 @@
         = tag.name
 
 
-= button_to "Issue", book_issue_path(@book), method: :post, class: "btn btn-dark"
-= button_to "Return", return_book_path(@book), method: :put, class: "btn btn-dark"
-= button_to "Archive", book_archive_path(@book), method: :put, class: "btn btn-dark"
-= button_to "Like", book_like_path(@book), method: :put, class: "btn btn-dark"
-= link_to "Preview", preview_book_path(@book), class: "btn btn-dark"
+= button_to "Issue", book_issue_book_path(@book), method: :post, class: "btn btn-dark"
+= button_to "Return", return_book_book_path(@book), method: :put, class: "btn btn-dark"
+= button_to "Archive", book_archive_book_path(@book), method: :put, class: "btn btn-dark"
+= button_to "Like", book_like_book_path(@book), method: :put, class: "btn btn-dark"
+= link_to "Preview", preview_book_book_path(@book), class: "btn btn-dark"
 = button_to "Delete", book_path(@book), method: :delete, class: "btn btn-danger"
-= link_to "Back", book_list_path(@book), class: "btn btn-dark"
+= link_to "Back", book_list_books_path(@book), class: "btn btn-dark"

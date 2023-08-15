@@ -2,22 +2,27 @@
 
 %center.h1.center All students
 
-= form_tag student_list_path, method: :get do
+= form_tag student_list_student_index_path, method: :get do
     = select_tag :filter, options_for_select([["All students", nil], ["Active students", "active"], ["Suspended students", "suspended"]], params[:filter])
     = submit_tag "Filter"
 
 %table.table
     %thead.table
         %tr
-            %th
+            %th 
+                = sortable "Id", "id"
                 = link_to "Id", :sort => "id", direction: params[:sort] == "id" && params[:direction] == "asc" ? "desc" : "asc"
-            %th
+            %th 
+                = sortable "first_name"
                 = link_to "First Name", :sort => "first_name", direction: params[:sort] == "first_name" && params[:direction] == "asc" ? "desc" : "asc"
             %th
+                = sortable "last_name"
                 = link_to "Last Name", :sort => "last_name", direction: params[:sort] == "last_name" && params[:direction] == "asc" ? "desc" : "asc"
             %th
+                = sortable "email"
                 = link_to "Email", :sort => "email", direction: params[:sort] == "email" && params[:direction] == "asc" ? "desc" : "asc"
             %th
+                = sortable "status"
                 = link_to "Status", :sort => "status", direction: params[:sort] == "status" && params[:direction] == "asc" ? "desc" : "asc"
             %th
         - @student.each do |student|

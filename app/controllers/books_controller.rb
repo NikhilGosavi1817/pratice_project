@@ -73,6 +73,7 @@ class BooksController < ApplicationController
 
     def like
         @book=Book.find(params[:id])
+        @book.likes ||= 0
         @book.likes+=1
         @book.save
         redirect_to book_path(@book) ,notice:"Book liked"

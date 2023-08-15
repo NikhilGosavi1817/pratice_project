@@ -29,5 +29,5 @@
                 %td
                     = student.status
                 %td
-                    = button_to "Reactivate", send_reactivation_mail_path(student), method: :post, class: "btn btn-dark"
+                    = button_to "Reactivate", send_reactivation_mail_student_path(student), method: :post, class: "btn btn-dark"
 = will_paginate @students
