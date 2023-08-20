@@ -28,6 +28,9 @@ gem 'prawn', '~> 2.1'
 gem 'apipie-rails'
 gem 'active_model_serializers'
 gem 'active_interaction'
+gem 'bootstrap', '~> 5.3.1'
+gem 'jquery-rails'
+gem 'popper_js', '>= 2.1.8', '< 3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

@@ -90,8 +90,9 @@ class BooksController < ApplicationController
     end
 
     def return
-        @book=current_user.issued_books.find(params[:id])
-        @book.students.destroy_all
+        @book=Book.find(params[:id])
+        @book_user = current_user.book_users.find_by(book_id: @book.id)
+        @book_user.destroy
         redirect_to book_path(@book) ,notice:"Book returned"
     end
 

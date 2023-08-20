@@ -1,25 +1,5 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
-@import "layouts/application";
-body {
-    font-family: "Lato", sans-serif;
-}
-
-\.sidenav {
+@import 'bootstrap';
+.sidenav {
     height: 100%;
     width: 0;
     position: fixed;
@@ -32,7 +12,7 @@ body {
     padding-top: 60px;
 }
 
-\.sidenav button {
+.sidenav button {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -41,7 +21,7 @@ body {
     transition: 0.3s;
 }
 
-\.sidenav a {
+.sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -51,10 +31,10 @@ body {
 }
 
 @media screen and (max-height: 450px) {
-    \.sidenav {
+    .sidenav {
         padding-top: 15px;
     }
-    \.sidenav a {
+    .sidenav a {
         font-size: 18px;
     }
 }
